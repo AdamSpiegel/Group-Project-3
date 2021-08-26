@@ -13,7 +13,7 @@ const typeDefs = gql`
         name: String
         count: Int
         date: TODO
-        time: TODO
+        time: Float
         description: String
     }
 
@@ -35,8 +35,22 @@ const typeDefs = gql`
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): User
         login(email: String!, password: String!): Auth
-        addEvent([TODO])
-        modifyEvent([TODO])
-        deleteEvent([TODO])
+        addEvent(name: String!, date: XXX, time: Float, description: String)
+        modifyEvent(name: String!,)
+        deleteEvent(name: String!)
     }
+
+    type Checkout {
+        session: ID
+      }
+
+    type Order {
+        _id: ID
+        purchaseDate: String
+        products: [Product]
+      }
 `;
+
+module.exports = typeDefs;
+
+// added temp checkout and order for stripe stuff

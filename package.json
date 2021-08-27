@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/AdamSpiegel/Group-Project-3#readme",
   "dependencies": {
+ typeDefsTwo
     "dayjs": "^1.10.6",
     "graphql-scalars": "^1.10.0"
+=======
+    "stripe": "^8.170.0"
+
   }
 }

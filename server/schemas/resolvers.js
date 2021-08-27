@@ -8,12 +8,15 @@ const resolvers = {
     Query: {
         findOldEvent: async () => {
             return await Event.find();
+            // .filter
         },
         findCurrentEvent: async () => {
             return await Event.find();
+            // .filter
         },
         fincUpcomingEvent: async () => {
             return await Event.find();
+            //  .filter
         },
     },
     Mutation: {

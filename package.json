@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AdamSpiegel/Group-Project-3#readme",
   "dependencies": {
+    "dayjs": "^1.10.6",
     "stripe": "^8.170.0"
   }
 }

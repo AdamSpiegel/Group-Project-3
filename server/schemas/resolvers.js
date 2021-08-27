@@ -1,7 +1,10 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Event } = require('../models');
 const { signToken } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+// Sets the secret key for stripe 
+const stripe = require('stripe')('sk_test_51JSq1lLalsDifFnKDRlCSy7uP5HOXsVfEqYKk8xfWFWBcFIsQuOHLv3X81cGtZICQ9ECqoeHQ9Gcu50gBNsQeNlu00HdZ7ILmv');
+const priceId = '{{PRICE_ID}}';
+
 // make ONE Event model
 // filter Events by comparing Date!
 const resolvers = {
@@ -15,7 +18,55 @@ const resolvers = {
         fincUpcomingEvent: async () => {
             return await Event.find();
         },
+        // attempting to create Query necessary to run stripe checkout process - AS - 8.27.21
+        checkout: async (parent, args, context) => {
+            const url = new URL(context.headers.referer).origin;
+            const order = new Order({ products: args.products });
+            const line_items = [];
+
+            const { products } = await order.populate('products').execPopulate();
+
+            for (let i = 0; i < products.length; i++) {
+                const product = await stripe.products.create({
+                    name: products[i].name,
+                    description: products[i].description,
+                    images: [`${url}/images/${products[i].image}`]
+                });
+
+                const price = await stripe.prices.create({
+                    product: product.id,
+                    unit_amount: products[i].price * 100,
+                    currency: 'usd',
+                });
+
+                line_items.push({
+                    price: price.id,
+                    quantity: 1
+                });
+            }
+            // below is modified for a subscription, not a cart session
+            const subscription = await stripe.subscriptions.create({
+                mode: 'subscription',
+                payment_method_types: ['card'],
+                customer: '',
+                line_items: [
+                    {
+                        price: priceId,
+                        quantity: 1,
+                    },
+                    {
+                        price: '',
+                        quantity: 2,
+                    },
+                ],
+                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${url}/`
+            });
+
+            return { session: session.id };
+        }
     },
+
     Mutation: {
         // user
         addUser: async (parent, args) => {

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AdamSpiegel/Group-Project-3#readme",
   "dependencies": {
+    "@stripe/stripe-js": "^1.17.1",
     "stripe": "^8.170.0"
   }
 }

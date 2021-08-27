@@ -6,14 +6,21 @@ const path = require('path');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import { DateTimeResolver, DateTimeTypeDefinition } from "graphql-scalars"
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 let server;
 async function startApollo() {
     server = new ApolloServer({
-        typeDefs,
-        resolvers,
+        typeDefs: [
+            ...DateTimeTypeDefinition
+        ],
+        resolvers: {
+            ...DateTimeResolver
+        },
 
         context: authMiddleware,
         plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],

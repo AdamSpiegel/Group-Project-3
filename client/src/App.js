@@ -12,6 +12,7 @@ import Success from '../src/pages/Success.js';
 import Subscribe from './src/pages/Subscribe.js';
 import Login from '../src/pages/Login.js';
 import Body from './components/body.js'
+import Footer from './components/footer.js'
 import '../src/App.css'
 import Footer from './components/footer/footer.js';
 import Dashboard from './pages/Dashboard';
@@ -38,6 +39,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+
     <ApolloProvider client={client}>
       <Router>
         <div>
@@ -54,6 +56,13 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+
+    <div className="App">
+      <Header />
+      <Body />
+      <Footer />
+    </div>
+
   )
 }
 export default App;

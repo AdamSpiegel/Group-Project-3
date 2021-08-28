@@ -32,7 +32,9 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Eventful
           </Typography>
+          <Button color="inherit">Home</Button>
           <Button color="inherit">Login</Button>
+          <Button color="inherit">Sign Up</Button>
         </Toolbar>
       </AppBar>
     </div>

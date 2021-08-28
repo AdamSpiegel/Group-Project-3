@@ -6,6 +6,7 @@ import Subscribe from '../src/pages/Subscribe.js';
 
 import Header from './components/header/header.js';
 import Body from './components/body.js'
+import Footer from './components/footer.js'
 import '../src/App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Header />
       <Body />
+      <Footer />
     </div>
   )
 }

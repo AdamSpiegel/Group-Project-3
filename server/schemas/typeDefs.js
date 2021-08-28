@@ -43,11 +43,6 @@ const typeDefs = gql`
         deleteEvent(name: String!)
     }
 
-    type Checkout {
-        session: ID
-      }
-
-
     type Order {
         _id: ID
         purchaseDate: String

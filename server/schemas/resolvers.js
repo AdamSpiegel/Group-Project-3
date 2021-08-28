@@ -2,21 +2,41 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Event } = require('../models');
 const { signToken } = require('../utils/auth');
 
+
 // Sets the secret key for stripe 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // make ONE Event model
 // filter Events by comparing Date!
+
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const dayjs = require('dayjs');
+
+let now = dayjs('YYYY-MM-DD');
+// beware of what current time is
+// maybe just do year, month, day to avoid wonky time stuff
+// ability to modify time
+// .find is used for arrays
+// make an array of Events
+// dayjs().format()
+
+
 const resolvers = {
     Query: {
         findOldEvent: async () => {
-            return await Event.find();
+            return await Event.isBefore(now);
+            // return await Event.find(Date);
+            // .filter by isBefore(now)
         },
         findCurrentEvent: async () => {
-            return await Event.find();
+            return await Event.isSame(now);
+            // return await Event.find();
+            // .filter by isSame
         },
-        fincUpcomingEvent: async () => {
-            return await Event.find();
+        findUpcomingEvent: async () => {
+            return await Event.isAfter(now);
+            // return await Event.find();
+            //  .filter by isAfter
         },
 
         checkout: async (parent, args, context) => {
@@ -78,14 +98,25 @@ const resolvers = {
         },
         // event
         addEvent: async (parent, { events }, context) => {
+
             // must be logged in, follow lines 27-29 for login checkin
             // event.create
             // use args or {args} to do so
             // like regular mongoose
             // create and return new created event
+
+            // create a button to link to?
             if (context.user) {
                 return await User.findByIdAndUpdate(context.user._id, args, { new: true });
             }
+            onclick.Event.create
+
+            // return Event
+
+            if (context.user) {
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            }
+
         },
         modifyEvent: async (parent, events, context) => {
             if (context.user) {

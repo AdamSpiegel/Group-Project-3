@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 // JWT too 
+var dayjs = require('dayjs')
+//import dayjs from 'dayjs' 
+// ES 2015
+dayjs().format()
 
 const eventSchema = new Schema({
     name: {
@@ -22,8 +26,11 @@ const eventSchema = new Schema({
     },
     time: {
         type: Number,
-        // 
         required: true,
+        // look into time formatting
+        // not a number or a float, could be a string
+        // time bundled with date! can, not should
+        // look into calendar drop down
     },
     description: {
         type: String,

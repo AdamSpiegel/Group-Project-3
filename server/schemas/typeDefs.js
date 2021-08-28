@@ -12,11 +12,7 @@ const typeDefs = gql`
         _id: ID
         name: String
         count: Int
-
-        date: Date
-=======
-        date: TODO
-
+        date: String
         time: Float
         description: String
     }
@@ -29,31 +25,24 @@ const typeDefs = gql`
         findCurrentEvent: [CurrentEvent] 
         findUpcomingEvent: [UpcomingEvent]
         user: User
-        TODO work on this
         checkout TODO with Stripe
     }
+
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): User
         login(email: String!, password: String!): Auth
+        addEvent(name: String!, date: String, time: Float, description: String)
+        modifyEvent(name: String!)
 
-        addEvent(name: String!, date: Date, time: Float, description: String)
+        addEvent(name: String!, date: String, time: Float, description: String)
         modifyEvent(name: String!)
         deleteEvent(name: String!)
     }
+
     type Checkout {
         session: ID
-      }
-
-        addEvent(name: String!, date: XXX, time: Float, description: String)
-        modifyEvent(name: String!,)
-        deleteEvent(name: String!)
     }
-
-    type Checkout {
-        session: ID
-      }
-
 
     type Order {
         _id: ID

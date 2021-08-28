@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/AdamSpiegel/Group-Project-3#readme",
   "dependencies": {
+<<<<<<< HEAD
+    "dayjs": "^1.10.6",
+    "graphql-scalars": "^1.10.0",
+=======
 
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -28,6 +32,7 @@
     "dayjs": "^1.10.6",
     "graphql-scalars": "^1.10.0"
 
+>>>>>>> 459b94a4002bd7ca9482d537bd10fe20fd855b00
     "stripe": "^8.170.0"
 
   }

@@ -3,11 +3,7 @@ const { User, Event } = require('../models');
 const { signToken } = require('../utils/auth');
 
 // Sets the secret key for stripe 
-const stripe = require('stripe')('sk_test_51JSq1lLalsDifFnKDRlCSy7uP5HOXsVfEqYKk8xfWFWBcFIsQuOHLv3X81cGtZICQ9ECqoeHQ9Gcu50gBNsQeNlu00HdZ7ILmv');
-const priceId = '{{PRICE_ID}}';
-const express = require("express");
-const app = express();
-const path = require('path');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // make ONE Event model
 // filter Events by comparing Date!
@@ -22,21 +18,7 @@ const resolvers = {
         fincUpcomingEvent: async () => {
             return await Event.find();
         },
-        user: async (parent, args, context) => {
-            if (context.user) {
-                const user = await User.findById(context.user._id).populate({
-                    path: 'orders.products',
-                    populate: 'category'
-                });
 
-                user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-                return user;
-            }
-
-            throw new AuthenticationError('Not logged in');
-        },
-        // Query necessary to run stripe checkout process - AS - 8.27.21
         checkout: async (parent, args, context) => {
             const url = new URL(context.headers.referer).origin;
 
@@ -59,6 +41,7 @@ const resolvers = {
 
             return { session: session.id };
         }
+        // getSubscriptions:
     },
 
     Mutation: {
@@ -112,6 +95,7 @@ const resolvers = {
             }
 
         },
+        // updateSubscription: 
     },
 }
 

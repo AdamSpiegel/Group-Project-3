@@ -17,24 +17,29 @@ const typeDefs = gql`
         description: String
     }
 
+    type Subscription {
+        name: String
+        description: String
+        priceId: String
+        price: Int
+    }
+
     type Auth {
         token: ID
         user: User
     }
 
-    type Query {
-        findOldEvent: [OldEvent]
-        findCurrentEvent: [CurrentEvent] 
-        findUpcomingEvent: [UpcomingEvent]
-        user: User
-    //    Stripe Query - Necessary?
-        order(_id: ID!): Order
-        checkout(products: [ID]!): Checkout
-    }
-    // Stripe Query - Necessary?
     type Checkout {
         session: ID
       }
+
+    type Query {
+        findOldEvent: [Event]
+        findCurrentEvent: [Event] 
+        findUpcomingEvent: [Event]
+        checkout(priceId: String!): Checkout
+        getSubscriptions: [Subscription]
+    }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
@@ -43,19 +48,12 @@ const typeDefs = gql`
         addEvent(name: String!, date: XXX, time: Float, description: String)
         modifyEvent(name: String!,)
         deleteEvent(name: String!)
+        updateSubscription(_id: ID!, price: priceId ): Subscription
     }
-
-    type Checkout {
-        session: ID
-      }
-
-    type Order {
-        _id: ID
-        purchaseDate: String
-        products: [Product]
-      }
 `;
 
 module.exports = typeDefs;
 
-// added temp checkout and order for stripe stuff
+
+
+

@@ -1,0 +1,2 @@
+const stripePromise = loadStripe('pk_test_51JSq1lLalsDifFnK704VjDcAMLpTtG4lgXMbrWSQmHdDixSum3EEmU54nSWPvmkjbCu2VbLtDuxTJoKq1wvz9ySX00YURY391S');
+

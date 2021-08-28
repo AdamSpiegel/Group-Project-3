@@ -3,8 +3,12 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 // JWT too 
 var dayjs = require('dayjs')
+
 //import dayjs from 'dayjs' 
 // ES 2015
+
+//import dayjs from 'dayjs' // ES 2015
+
 dayjs().format()
 
 const eventSchema = new Schema({

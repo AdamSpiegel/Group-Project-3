@@ -7,6 +7,9 @@ console.log(now.format('YYYY-MM-DD [at] HH:mm:ss'));
 console.log(now.toString());
 // The isSame(), isBefore(), and isAfter() functions can be used to determine if a date is before or after another date.
 
+let d = new Date(2021, 8, 28);
+let day = dayjs(d);
+
 let d1 = dayjs("2018-05-19");
 let d2 = dayjs("2018-05-20");
 let d3 = dayjs("2018-05-22");

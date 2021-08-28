@@ -45,18 +45,20 @@ const resolvers = {
                 });
             }
             // below is modified for a subscription, not a cart session
-            const subscription = await stripe.subscriptions.create({
+            const session = await stripe.checkout.sessions.create({
                 mode: 'subscription',
                 payment_method_types: ['card'],
                 customer: '',
                 line_items: [
                     {
-                        price: priceId,
+                        // Gold package priceId
+                        price: price_1JSsU8LalsDifFnK73KG086o,
                         quantity: 1,
                     },
                     {
-                        price: '',
-                        quantity: 2,
+                        // Diamond package priceId
+                        price: 'price_1JSt2gLalsDifFnKmlMGliy4',
+                        quantity: 1,
                     },
                 ],
                 success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,

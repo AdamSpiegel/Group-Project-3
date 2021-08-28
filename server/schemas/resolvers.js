@@ -29,19 +29,23 @@ const resolvers = {
                 customer: '',
                 line_items: [
                     {
-                        // Gold package priceId
                         price: args.price,
                         quantity: 1,
                     },
 
                 ],
+                // Sends user to successful checkout page, or re-directs to homepage, if checkout not completed
                 success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${url}/`
             });
 
             return { session: session.id };
+        },
+
+        getSubscriptions: async (parent, { subscription }, context) => {
+            console.log(context);
+
         }
-        // getSubscriptions:
     },
 
     Mutation: {

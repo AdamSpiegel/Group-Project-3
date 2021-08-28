@@ -27,9 +27,14 @@ const typeDefs = gql`
         findCurrentEvent: [CurrentEvent] 
         findUpcomingEvent: [UpcomingEvent]
         user: User
-        TODO work on this
-        checkout TODO with Stripe
+    //    Stripe Query - Necessary?
+        order(_id: ID!): Order
+        checkout(products: [ID]!): Checkout
     }
+    // Stripe Query - Necessary?
+    type Checkout {
+        session: ID
+      }
 
     type Mutation {
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth

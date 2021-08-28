@@ -1,9 +1,13 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Event } = require('../models');
 const { signToken } = require('../utils/auth');
+
 // Sets the secret key for stripe 
 const stripe = require('stripe')('sk_test_51JSq1lLalsDifFnKDRlCSy7uP5HOXsVfEqYKk8xfWFWBcFIsQuOHLv3X81cGtZICQ9ECqoeHQ9Gcu50gBNsQeNlu00HdZ7ILmv');
 const priceId = '{{PRICE_ID}}';
+const express = require("express");
+const app = express();
+const path = require('path');
 
 // make ONE Event model
 // filter Events by comparing Date!
@@ -18,32 +22,24 @@ const resolvers = {
         fincUpcomingEvent: async () => {
             return await Event.find();
         },
-        // attempting to create Query necessary to run stripe checkout process - AS - 8.27.21
+        user: async (parent, args, context) => {
+            if (context.user) {
+                const user = await User.findById(context.user._id).populate({
+                    path: 'orders.products',
+                    populate: 'category'
+                });
+
+                user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+                return user;
+            }
+
+            throw new AuthenticationError('Not logged in');
+        },
+        // Query necessary to run stripe checkout process - AS - 8.27.21
         checkout: async (parent, args, context) => {
             const url = new URL(context.headers.referer).origin;
-            const order = new Order({ products: args.products });
-            const line_items = [];
 
-            const { products } = await order.populate('products').execPopulate();
-
-            for (let i = 0; i < products.length; i++) {
-                const product = await stripe.products.create({
-                    name: products[i].name,
-                    description: products[i].description,
-                    images: [`${url}/images/${products[i].image}`]
-                });
-
-                const price = await stripe.prices.create({
-                    product: product.id,
-                    unit_amount: products[i].price * 100,
-                    currency: 'usd',
-                });
-
-                line_items.push({
-                    price: price.id,
-                    quantity: 1
-                });
-            }
             // below is modified for a subscription, not a cart session
             const session = await stripe.checkout.sessions.create({
                 mode: 'subscription',
@@ -52,14 +48,10 @@ const resolvers = {
                 line_items: [
                     {
                         // Gold package priceId
-                        price: price_1JSsU8LalsDifFnK73KG086o,
+                        price: args.price,
                         quantity: 1,
                     },
-                    {
-                        // Diamond package priceId
-                        price: 'price_1JSt2gLalsDifFnKmlMGliy4',
-                        quantity: 1,
-                    },
+
                 ],
                 success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
                 cancel_url: `${url}/`

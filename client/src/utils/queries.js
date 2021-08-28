@@ -20,10 +20,18 @@ export const QUERY_ALL_SUBSCRIPTIONS = gql`
   }
 `;
 
-export const OLD_EVENT = gql``;
+export const OLD_EVENT = gql`
+{
+    
+}
+`;
 
-export const CURRENT_EVENT = gql``;
+export const CURRENT_EVENT = gql`
 
-export const UPCOMING_EVENT = gql``;
+`;
+
+export const UPCOMING_EVENT = gql`
+
+`;
 
 

@@ -11,6 +11,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const dayjs = require('dayjs');
+const { subscribe } = require('graphql');
 
 let now = dayjs('YYYY-MM-DD');
 // beware of what current time is
@@ -62,8 +63,9 @@ const resolvers = {
             return { session: session.id };
         },
 
-        getSubscriptions: async (parent, { subscription }, context) => {
-            console.log(context);
+        // Need to complete this functionality 
+        getSubscriptions: async (parent, { _id }) => {
+            return await subscription.findById(_id).populate
 
         }
     },

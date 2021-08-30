@@ -14,7 +14,6 @@ import Login from '../src/pages/Login.js';
 import Body from './components/body.js'
 import Footer from './components/footer.js'
 import '../src/App.css'
-import Footer from './components/footer/footer.js';
 import Dashboard from './pages/Dashboard';
 
 

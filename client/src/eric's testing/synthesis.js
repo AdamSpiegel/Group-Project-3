@@ -72,12 +72,12 @@ export default function NestedList() {
                             disableRipple
                             inputProps={{ 'aria-labelledby': `checkbox-list-label-${value}` }}
                         />
-                        <SendIcon />
+                        {/* <SendIcon /> */}
                     </ListItemIcon >
                     <ListItemText primary="Sent mail" />
                 </ListItem>
             ))}
-            <ListItem button>
+            {/* <ListItem button>
                 <ListItemIcon>
                     <DraftsIcon />
                 </ListItemIcon>
@@ -100,7 +100,7 @@ export default function NestedList() {
                     <DraftsIcon />
                 </ListItemIcon>
                 <ListItemText primary="Drafts" />
-            </ListItem>
+            </ListItem> */}
             <ListItem button onClick={handleClick}>
                 <ListItemIcon>
                     <InboxIcon />
@@ -135,5 +135,36 @@ export default function NestedList() {
 }
 
 // collapse type
+{/* <ListItem button onClick={handleClick}>
+                <ListItemIcon>
+                    <InboxIcon />
+                </ListItemIcon>
+                <ListItemText primary="Inbox" />
+                {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItem> */}
+
+// with full collapse
+{/* <ListItem button onClick={handleClick}>
+<ListItemIcon>
+    <InboxIcon />
+</ListItemIcon>
+<ListItemText primary="Inbox" />
+{open ? <ExpandLess /> : <ExpandMore />}
+</ListItem>
+<Collapse in={open} timeout="auto" unmountOnExit>
+<List component="div" disablePadding>
+    <ListItem button className={classes.nested}>
+        <ListItemIcon>
+            <StarBorder />
+        </ListItemIcon>
+        <ListItemText primary="Starred" />
+        <ListItemSecondaryAction>
+            <IconButton edge="end" aria-label="comments">
+                <CommentIcon />
+            </IconButton>
+        </ListItemSecondaryAction>
+    </ListItem>
+</List>
+</Collapse> */}
 
 // checkbox type

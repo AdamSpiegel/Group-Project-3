@@ -19,7 +19,7 @@ const typeDefs = gql`
 
 
     type Subscription {
-        name: String
+        packageName: String
         description: String
         priceId: String
         price: Int

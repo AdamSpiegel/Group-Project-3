@@ -10,13 +10,12 @@ query getCheckout($priceId: String!) {
 
 export const QUERY_ALL_SUBSCRIPTIONS = gql`
   {
-    subscriptions {
+    getSubscriptions {
         packageName
+        description
         priceId
-        packagePrice
-        packageDescription
+        price
       }
-    }
   }
 `;
 

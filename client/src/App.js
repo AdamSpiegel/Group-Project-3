@@ -54,12 +54,6 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
-    <div className="App">
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-
   )
 }
 export default App;

@@ -22,16 +22,41 @@ export const QUERY_ALL_SUBSCRIPTIONS = gql`
 
 export const OLD_EVENT = gql`
 {
-    
+    findOldEvent {
+      _id
+      name
+      count
+      date
+      time
+      description
+    }
 }
 `;
 
 export const CURRENT_EVENT = gql`
-
+{
+  findCurrentEvent {
+    _id
+    name
+    count
+    date
+    time 
+    description
+  }
+}
 `;
 
 export const UPCOMING_EVENT = gql`
-
+{
+  findUpcomingEvent {
+    _id
+    name
+    count
+    date
+    time 
+    description
+  }
+}
 `;
 
 

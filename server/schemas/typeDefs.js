@@ -13,7 +13,7 @@ const typeDefs = gql`
         name: String
         count: Int
         date: String
-        time: Float
+        time: Int
         description: String
     }
 

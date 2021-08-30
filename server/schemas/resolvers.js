@@ -1,8 +1,17 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Event } = require('../models');
 const { signToken } = require('../utils/auth');
+
+
+// Sets the secret key for stripe 
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+// make ONE Event model
+// filter Events by comparing Date!
+
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const dayjs = require('dayjs');
+const { subscribe } = require('graphql');
 
 let now = dayjs('YYYY-MM-DD');
 // beware of what current time is
@@ -11,6 +20,7 @@ let now = dayjs('YYYY-MM-DD');
 // .find is used for arrays
 // make an array of Events
 // dayjs().format()
+
 
 const resolvers = {
     Query: {
@@ -29,7 +39,37 @@ const resolvers = {
             // return await Event.find();
             //  .filter by isAfter
         },
+
+        checkout: async (parent, args, context) => {
+            const url = new URL(context.headers.referer).origin;
+
+            // below is modified for a subscription, not a cart session
+            const session = await stripe.checkout.sessions.create({
+                mode: 'subscription',
+                payment_method_types: ['card'],
+                customer: '',
+                line_items: [
+                    {
+                        price: args.price,
+                        quantity: 1,
+                    },
+
+                ],
+                // Sends user to successful checkout page, or re-directs to homepage, if checkout not completed
+                success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${url}/`
+            });
+
+            return { session: session.id };
+        },
+
+        // Need to complete this functionality 
+        getSubscriptions: async (parent, { _id }) => {
+            return await subscription.findById(_id).populate
+
+        }
     },
+
     Mutation: {
         // user
         addUser: async (parent, args) => {
@@ -92,6 +132,7 @@ const resolvers = {
             }
 
         },
+        // updateSubscription: 
     },
 }
 

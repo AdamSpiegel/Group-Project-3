@@ -28,6 +28,10 @@ const resolvers = {
             return await Event.isBefore(now);
             // return await Event.find(Date);
             // .filter by isBefore(now)
+
+            // if Date < now
+            // maybe nest the whole thing under findEvent, find allthe events first then target the old ones/new ones using if statements
+            // if Event.Date < now then its old, just have to compare it
         },
         findCurrentEvent: async () => {
             return await Event.isSame(now);
@@ -100,7 +104,6 @@ const resolvers = {
         },
         // event
         addEvent: async (parent, { events }, context) => {
-
             // must be logged in, follow lines 27-29 for login checkin
             // event.create
             // use args or {args} to do so
@@ -109,7 +112,9 @@ const resolvers = {
 
             // create a button to link to?
             if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+                const event = new Event({ events });
+                await User.findByIdAndUpdate(context.user._id, { $push: { events: event } });
+                return event;
             }
             onclick.Event.create
 
@@ -120,16 +125,19 @@ const resolvers = {
             }
 
         },
-        modifyEvent: async (parent, events, context) => {
+        modifyEvent: async (parent, { events }, context) => {
             if (context.user) {
                 return await User.findByIdAndUpdate(context.user._id, args, { new: true });
             }
 
         },
-        deleteEvent: async (parent, events, context) => {
+        deleteEvent: async (parent, { events }, context) => {
             if (context.user) {
-                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+                // const event = Event({ events });
+                await Event.findByIdAndUpdate(context.Event._id, { $pull: { events: event } });
+                // return event;
             }
+            onclick.Event.destroy;
 
         },
         updateSubscription: async (parent, events, context) => {

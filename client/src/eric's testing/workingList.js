@@ -17,6 +17,12 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import StarBorder from "@material-ui/icons/StarBorder";
 
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import CakeIcon from '@material-ui/icons/Cake';
+import RedeemIcon from '@material-ui/icons/Redeem';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         width: "100%",

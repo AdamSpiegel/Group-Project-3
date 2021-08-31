@@ -132,7 +132,11 @@ const resolvers = {
             }
 
         },
-        // updateSubscription: 
+        updateSubscription: async (parent, events, context) => {
+            if (context.user) {
+                return await User.findByIdAndUpdate(context.user._id, args, { new: true });
+            }
+        },
     },
 }
 

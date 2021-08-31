@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Success() {
     const classes = useStyles();
-    // Used for updating user after they purchase subscription i.e. "subscribe: true"
+    // Return is being used for updating user after they purchase subscription i.e. "subscribe: true"
     return (
         <div className={classes.root}>
             <Box width="25%">

@@ -25,6 +25,7 @@
     "mongoose": "^6.0.0",
     "react": "^17.0.2",
     "react-redux": "^7.2.4",
+    "sound": "^2.7.0",
     "stripe": "^8.170.0"
   },
   "devDependencies": {

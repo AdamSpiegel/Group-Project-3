@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
 
@@ -42,13 +41,13 @@ const InjectedCheckoutForm = () => (
 
 const stripePromise = loadStripe('pk_test_51JSq1lLalsDifFnK704VjDcAMLpTtG4lgXMbrWSQmHdDixSum3EEmU54nSWPvmkjbCu2VbLtDuxTJoKq1wvz9ySX00YURY391S');
 
-const App = () => (
+const Subscribe = () => (
     <Elements stripe={stripePromise}>
         <InjectedCheckoutForm />
     </Elements>
 );
 
-ReactDOM.render(<App />, document.body);
+export default Subscribe;
 
 
 

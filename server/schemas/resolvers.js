@@ -50,7 +50,6 @@ const resolvers = {
             const session = await stripe.checkout.sessions.create({
                 mode: 'subscription',
                 payment_method_types: ['card'],
-                customer: '',
                 line_items: [
                     {
                         price: args.price,
@@ -67,9 +66,8 @@ const resolvers = {
         },
 
         // Need to complete this functionality 
-        getSubscriptions: async (parent, { _id }) => {
-            return await subscription.findById(_id).populate
-
+        getSubscriptions: async (parent) => {
+            return [{ priceId: "", name: "", description: "" }, { priceId: "", name: "", description: "" }]
         }
     },
 

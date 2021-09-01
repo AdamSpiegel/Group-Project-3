@@ -20,13 +20,13 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 
-import Header from '../src/components/header/header.js';
-import Success from '../src/pages/Success.js';
-import Subscribe from './src/pages/Subscribe.js';
+import Header from './components/header/header.js';
+import Success from './pages/Success.js';
+import Subscribe from './pages/Subscribe.js';
 import Login from './pages/Login.js';
 import Body from './components/body.js'
 import Footer from './components/footer.js'
-import '../src/App.css'
+import './App.css'
 import Dashboard from './pages/Dashboard';
 
 
@@ -59,7 +59,6 @@ function App() {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/body" component={Body} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
             <Route exact path="/success" component={Success} />
             <Route exact path="/subscribe" component={Subscribe} />
           </Switch>

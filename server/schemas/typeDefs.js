@@ -56,14 +56,12 @@ const typeDefs = gql`
 
     type Checkout {
         session: ID
-
         addEvent(name: String!, date: String!, time: String!, description: String!): User
         modifyEvent(name: String!, date: String, time: Float, description: String): User
         deleteEvent(name: String!): User
         updateSubscription(_id: ID!, priceId: String): User 
 
     }
-
 `;
 
 module.exports = typeDefs;

@@ -6,11 +6,13 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
 
 import Header from '../src/components/header/header.js';
 import Success from '../src/pages/Success.js';
 import Subscribe from './src/pages/Subscribe.js';
-import Login from '../src/pages/Login.js';
+import Login from './pages/Login.js';
 import Body from './components/body.js'
 import Footer from './components/footer.js'
 import '../src/App.css'

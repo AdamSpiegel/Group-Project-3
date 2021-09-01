@@ -13,13 +13,13 @@ const typeDefs = gql`
         name: String
         count: Int
         date: String
-        time: Float
+        time: Int
         description: String
     }
 
 
     type Subscription {
-        name: String
+        packageName: String
         description: String
         priceId: String
         price: Int

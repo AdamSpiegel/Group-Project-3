@@ -3,11 +3,13 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const path = require('path');
+
 const db = require('./config/connection');
 // confusion
 // const { typeDefs, resolvers } = require('./schemas');
 const typeDefs = require('./schemas/typeDefs');
 const resolvers = require('./schemas/resolvers');
+
 const { authMiddleware } = require('./utils/auth');
 
 // import { makeExecutableSchema } from '@graphql-tools/schema';

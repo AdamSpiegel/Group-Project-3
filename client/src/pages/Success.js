@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Success() {
     const classes = useStyles();
-    // Used for updating user after they purchase subscription i.e. "subscribe: true"
+    // Return is being used for updating user after they purchase subscription i.e. "subscribe: true"
     return (
         <div className={classes.root}>
             <Box width="25%">

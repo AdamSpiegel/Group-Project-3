@@ -1,30 +1,41 @@
-const jwt = require('jsonwebtoken');
+import decode from 'jwt-decode';
 
-const secret = 'mysecret';
-const expiration = '4h';
+class AuthService {
+    getProfile() {
+        return decode(this.getToken());
+    }
 
-module.exports = {
-    authMiddleware: function ({ req }) {
-        let token = req.body.token || req.query.token || req.headers.authorization;
+    loggedIn() {
+        const token = this.getToken();
+        // If there is a token and it's not expired, return `true`
+        return token && !this.isTokenExpired(token) ? true : false;
+    }
 
-        if (req.headers.authorization) {
-            token = token.split(' ').pop().trim();
+    isTokenExpired(token) {
+        // Decode the token to get its expiration time that was set by the server
+        const decoded = decode(token);
+        // If the expiration time is less than the current time (in seconds), the token is expired and we return `true`
+        if (decoded.exp < Date.now() / 1000) {
+            localStorage.removeItem('id_token');
+            return true;
         }
-        if (!token) {
-            return req;
-        }
+        // If token hasn't passed its expiration time, return `false`
+        return false;
+    }
 
-        try {
-            const { data } = jwt.verify(token, secret, { maxAge: expiration });
-            req.user = data;
-        } catch {
-            console.log('Invalid token, check auth.js');
-        }
-        return req;
-    },
-    signToken: function ({ _id, name, email }) {
-        const payload = { _id, name, email };
+    getToken() {
+        return localStorage.getItem('id_token');
+    }
 
-        return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-    },
-};
+    login(idToken) {
+        localStorage.setItem('id_token', idToken);
+        window.location.assign('/');
+    }
+
+    logout() {
+        localStorage.removeItem('id_token');
+        window.location.reload();
+    }
+}
+
+export default new AuthService();

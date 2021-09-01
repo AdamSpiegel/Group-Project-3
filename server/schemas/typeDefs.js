@@ -36,11 +36,6 @@ const typeDefs = gql`
 
     type Query {
 
-        findOldEvent: [OldEvent]
-        findCurrentEvent: [CurrentEvent] 
-        findUpcomingEvent: [UpcomingEvent]
-        user: User
-
         findOldEvent: [Event]
         findCurrentEvent: [Event] 
         findUpcomingEvent: [Event]
@@ -54,10 +49,6 @@ const typeDefs = gql`
         addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         updateUser(firstName: String, lastName: String, email: String, password: String): User
         login(email: String!, password: String!): Auth
-
-        addEvent(name: String!, date: String, time: Float, description: String): User
-        modifyEvent(name: String!): User
-
         addEvent(name: String!, date: String, time: Float, description: String): User
         modifyEvent(name: String!): User
         deleteEvent(name: String!): User
@@ -65,19 +56,11 @@ const typeDefs = gql`
 
     type Checkout {
         session: ID
-
         addEvent(name: String!, date: String!, time: String!, description: String!)
         modifyEvent(name: String!, date: String, time: Float, description: String)
         deleteEvent(name: String!)
-        updateSubscription(_id: ID!, price: priceId ): 
-
+        updateSubscription(_id: ID!, priceId: String): 
     }
-
-    type Order {
-        _id: ID
-        purchaseDate: String
-        products: [Product]
-      }
 `;
 
 module.exports = typeDefs;

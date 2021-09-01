@@ -1,16 +1,12 @@
 import React from 'react';
 import Header from './components/header/header.js';
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Footer from './components/footer.js'
 import '../src/App.css'
 import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
 import CreateEvent from './pages/CreateEvent.js'
-import NavBar from './pages/NavBar.js'
 
-
-
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -19,15 +15,10 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-
-import Header from './components/header/header.js';
 import Success from './pages/Success.js';
 import Subscribe from './pages/Subscribe.js';
-import Login from './pages/Login.js';
 import Body from './components/body.js'
-import Footer from './components/footer.js'
 import './App.css'
-import Dashboard from './pages/Dashboard';
 
 
 const httpLink = createHttpLink({
@@ -61,6 +52,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/success" component={Success} />
             <Route exact path="/subscribe" component={Subscribe} />
+            <Route exact path="/CreateEvent" component={CreateEvent} />
           </Switch>
           <Footer />
         </div>

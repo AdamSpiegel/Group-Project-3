@@ -9,6 +9,7 @@ import image3 from '../photos/jeremy-wong-weddings-464ps_nOflw-unsplash.jpg';
 import image4 from '../photos/photos-by-lanty-O38Id_cyV4M-unsplash.jpg';
 import image5 from '../photos/redd-PTRzqc_h1r4-unsplash.jpg';
 import Box from '@material-ui/core/Box';
+import {useHistory} from "react-router-dom";
 
 
 

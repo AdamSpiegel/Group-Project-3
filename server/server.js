@@ -1,16 +1,13 @@
 // import React from 'react';
+const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { ApolloServerPluginLandingPageGraphQLPlayground } = require('apollo-server-core');
 const path = require('path');
-
-const express = require('express');
 const db = require('./config/connection');
-
-const stripe = require('stripe')('sk_test_51JSq1lLalsDifFnKDRlCSy7uP5HOXsVfEqYKk8xfWFWBcFIsQuOHLv3X81cGtZICQ9ECqoeHQ9Gcu50gBNsQeNlu00HdZ7ILmv');
-const priceId = '{{PRICE_ID}}';
-
-
-const { typeDefs, resolvers } = require('./schemas');
+// confusion
+// const { typeDefs, resolvers } = require('./schemas');
+const typeDefs = require('./schemas/typeDefs');
+const resolvers = require('./schemas/resolvers');
 const { authMiddleware } = require('./utils/auth');
 
 // import { makeExecutableSchema } from '@graphql-tools/schema';
@@ -25,12 +22,8 @@ const PORT = process.env.PORT || 3001;
 let server;
 async function startApollo() {
     server = new ApolloServer({
-        typeDefs: [
-            ...DateTimeTypeDefinition
-        ],
-        resolvers: {
-            ...DateTimeResolver
-        },
+        typeDefs,
+        resolvers,
 
         context: authMiddleware,
         plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],

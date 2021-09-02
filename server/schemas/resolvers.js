@@ -71,7 +71,7 @@ const resolvers = {
 
         // Need to complete this functionality 
         getSubscriptions: async (parent) => {
-            return [{ priceId: "", name: "", description: "" }, { priceId: "", name: "", description: "" }]
+            return [{ priceId: "price_1JSsU8LalsDifFnK73KG086o", name: "Gold Package", description: "Eventful offers a Gold Package to our customers which includes a Personalized Online Planning Assistance - Meet with an Eventful planning rep for 3 hours per week, Gain insight with our personalized webinars, and more!" }, { priceId: "price_1JSt2gLalsDifFnKmlMGliy4", name: "Diamond Package", description: "Eventful's exclusive Diamond Package which offers our customers a Eventful party planning specialist to meet with you personally to orchestrate your events for you! Gain valuable event planning insight with one of our professionals, one on one!" }]
         }
     },
 

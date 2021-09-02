@@ -24,9 +24,10 @@ export default function SimpleBottomNavigation() {
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction label="GitHub" icon={<GitHubIcon />} />
+    
+      <BottomNavigationAction label="GitHub" icon={<GitHubIcon onClick={event => window.location.href='https://github.com/AdamSpiegel/Group-Project-3'} />} />
       <BottomNavigationAction label="Support" icon={<ContactSupportIcon />} />
-      <BottomNavigationAction label="About" icon={<InfoIcon />} />
+      <BottomNavigationAction label="About" icon={<InfoIcon onClick={event => window.location.href='https://github.com/AdamSpiegel/Group-Project-3/blob/main/README.md'}/>} />
     </BottomNavigation>
   );
 }

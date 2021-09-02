@@ -20,7 +20,8 @@ const PlaySound = (
                 }
                 playFromPosition={300}
                 onLoading={handleSongLoading}
-                onPlaying={handleSongFinishedPlaying}
+                onPlaying={handleSongPlaying}
+                onFinishedPlaying={handleSongFinishedPlaying}
             />
         </div>
     );

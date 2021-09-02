@@ -40,17 +40,24 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
+          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <MenuIcon />
+          </IconButton> */}
           <Typography variant="h6" className={classes.title}>
             Eventful
           </Typography>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Login</Button>
           <Button onClick={() => {
-            history.push('/CreateEvent');
+            history.push('/');
+          }} color="inherit">Home</Button>
+          <Button onClick={() => {
+            history.push('CreateEvent');
+          }} color="inherit">Create Event</Button>
+          <Button onClick={() => {
+            history.push('/Signup');
           }} color="inherit">Sign Up</Button>
+          <Button onClick={() => {
+            history.push('/Login');
+          }} color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>

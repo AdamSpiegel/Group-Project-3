@@ -159,6 +159,15 @@ Matthew Shafransky 🧑‍💻
 <br>
 
 ## Screenshots 📸💥
+Screenshot of homepage</br>
+![snip 9-2](https://user-images.githubusercontent.com/80430372/131908800-10ecd5e1-d90a-441b-b036-55cfd4319a51.PNG)
+</br>
+Screenshot of Create Event</br>
+![snip 9-2 part 2](https://user-images.githubusercontent.com/80430372/131909717-a2171787-9174-4915-970d-f79c66c3d713.PNG)
+</br>
+Screenshot of Signup Capabilites</br>
+![snip 9-2 part 3](https://user-images.githubusercontent.com/80430372/131909844-d3799fcd-65d4-4b9f-888d-3ec333221976.PNG)
+
 
 ### _Eventufl Application Functionality_
 

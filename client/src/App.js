@@ -6,6 +6,7 @@ import '../src/App.css'
 import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
 import CreateEvent from './pages/CreateEvent.js'
+import PlaySound from './components/playsound.js';
 
 import {
   ApolloClient,
@@ -54,6 +55,7 @@ function App() {
             <Route exact path="/subscribe" component={Subscribe} />
             <Route exact path="/CreateEvent" component={CreateEvent} />
           </Switch>
+          <PlaySound />
           <Footer />
         </div>
       </Router>

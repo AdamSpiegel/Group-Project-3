@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
 import CreateEvent from './pages/CreateEvent.js'
 import PlaySound from './components/playsound.js';
+import Signup from '../src/pages/Signup.js'
 
 import {
   ApolloClient,
@@ -54,6 +55,7 @@ function App() {
             <Route exact path="/success" component={Success} />
             <Route exact path="/subscribe" component={Subscribe} />
             <Route exact path="/CreateEvent" component={CreateEvent} />
+            <Route exact path="/Signup" component={Signup} />
           </Switch>
           <PlaySound />
           <Footer />

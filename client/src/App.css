@@ -27,3 +27,12 @@ nav .brand-logo {
   color: #61dafb;
 }
 
+.MuiBottomNavigation-root {
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

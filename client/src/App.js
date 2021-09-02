@@ -6,7 +6,7 @@ import '../src/App.css'
 import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
 import CreateEvent from './pages/CreateEvent.js'
-import PlaySound from './components/playsound.js';
+// import PlaySound from './components/playsound.js';
 import Signup from '../src/pages/Signup.js'
 
 import {
@@ -19,8 +19,8 @@ import { setContext } from '@apollo/client/link/context';
 
 import Success from './pages/Success.js';
 import Subscribe from './pages/Subscribe.js';
-import Body from './components/body.js'
-import './App.css'
+import Body from './components/body.js';
+import './App.css';
 
 
 const httpLink = createHttpLink({
@@ -57,7 +57,7 @@ function App() {
             <Route exact path="/CreateEvent" component={CreateEvent} />
             <Route exact path="/Signup" component={Signup} />
           </Switch>
-          <PlaySound />
+          {/* <PlaySound /> */}
           <Footer />
         </div>
       </Router>

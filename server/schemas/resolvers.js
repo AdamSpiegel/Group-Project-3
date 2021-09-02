@@ -24,7 +24,11 @@ let now = dayjs('YYYY-MM-DD');
 const resolvers = {
     Query: {
         findOldEvent: async () => {
-            return await Event.isBefore(now);
+            return await Event.find();
+            // if (now < Event.date) {
+            //     return
+            // }
+            // return await Event.isBefore(now);
             // return await Event.find(Date);
             // .filter by isBefore(now)
 

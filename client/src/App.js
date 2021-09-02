@@ -6,7 +6,7 @@ import '../src/App.css'
 import Dashboard from './pages/Dashboard.js'
 import Login from './pages/Login.js'
 import CreateEvent from './pages/CreateEvent.js'
-import PlaySound from './components/playsound.js';
+// import PlaySound from './components/playsound.js';
 import Signup from '../src/pages/Signup.js'
 
 import {
@@ -57,7 +57,7 @@ function App() {
             <Route exact path="/CreateEvent" component={CreateEvent} />
             <Route exact path="/Signup" component={Signup} />
           </Switch>
-          <PlaySound />
+          {/* <PlaySound /> */}
           <Footer />
         </div>
       </Router>
